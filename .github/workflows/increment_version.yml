@@ -40,6 +40,9 @@ jobs:
           major_minor=$version
           echo "HERE ARE THE TAGS"
           echo "$(git tag -l "${major_minor}.*")"
+          git pull --tags
+          echo "HERE ARE THE TAGS"
+          echo "$(git tag -l "${major_minor}.*")"
           latest_patch=$(git tag -l "${major_minor}.*" | grep -oE "[0-9]+$" | sort -n | tail -1)
           if [ -z "$latest_patch" ]; then
             latest_patch=0
